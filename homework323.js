@@ -42,15 +42,60 @@ console.log(first([7, 9, 0, -2], -3));
 //Test Data:
 //console.log(last([7, 9, 0, -2])); console.log(last([7, 9, 0, -2], 3)); console.log(last([7, 9, 0, -2], 6)); Expected Output: -2[9, 0, -2][7, 9, 0, -2]
 
+function getLastElement(arr, n) {
+  let startIndex = arr.length - n;
+  let newArray = []
+  for (let i = startIndex; i < arr.length; i++) {
+    newArray.push(arr[i])
+  }
+  return newArray
+}
+
+console.log(getLastElement([1, 2, 3, 4, 5, 6, 7], 4))
+console.log(getLastElement([1, 2, 3, 4], 4))
+console.log(getLastElement([1, 2, 3, 4], 2))
+
 //5. Write a simple JavaScript program to join all elements of the following array into a string.
 //Sample array: myColor = ["Red", "Green", "White", "Black"]; Expected Output: "Red,Green,White,Black" "Red,Green,White,Black" "Red+Green+White+Black"
 
+function joinElementsToString(arr, str) {
+  let newStr = ""
+  for (let i = 0; i < arr.length; i++) {
+    if (i === arr.length - 1) {
+      newStr = newStr + arr[i]
+    } else {
+      newStr = newStr + arr[i] + str
+    }
+  }
+  return newStr
+}
+
+console.log(joinElementsToString(["Red", "Green", "White", "Black"], ','))
+console.log(joinElementsToString(["Red", "Green", "White", "Black"], '+'))
+
 //6. Write a JavaScript program which accept a number as input and insert dashes(-) between each two even numbers.For example if you accept 025468 the output should be 0 - 254 - 6 - 8.
 
-function insertDash(num) {}
+function insertDash(num) {
+  let numStr = num.toString()
+  let insert = " - "
+  for (let i = numStr.length-1; i > 0; i--) {
+    let y = parseInt(numStr[i])
+    let x = parseInt(numStr[i - 1])
+    if (y % 2 === 0 && x % 2 === 0) {
+      numStr = numStr.slice(0, i) + insert + numStr.slice(i)
+    }
+  }
+  return numStr
+}
+
+console.log(insertDash(68754320))
+console.log(insertDash(3579))
+console.log(insertDash(2468))
 
 //7. Write a JavaScript program to sort the items of an array.
-//Sample array: var arr1 = [3, 8, 7, 6, 5, -4, 3, 2, 1]; Sample Output: -4, -3, 1, 2, 3, 5, 6, 7, 8
+//Sample array: var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1]; Sample Output: -4, -3, 1, 2, 3, 5, 6, 7, 8
+
+
 
 //8. Write a JavaScript program to find the most frequent item of an array.
 //Sample array: var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]; Sample Output: a(5 times)
@@ -103,6 +148,15 @@ printArrays(a);
 
 //11. Write a JavaScript program to find the sum of squares of a numeric vector.
 
+function vectorSumOfSquares(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += (arr[i] * arr[i])
+  }
+  return sum;
+}
+vectorSumOfSquares([3,4,5,6])
+
 //12. Write a JavaScript program to compute the sum and product of an array of integers.
 
 function computeSumAndProduct(arr) {
@@ -139,8 +193,12 @@ addItems(
 
 //15. We have the following arrays:
 //color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "]; o = ["th", "st", "nd", "rd"] Write a JavaScript program to display the colors in the following way: "1st choice is Blue ." "2nd choice is Green." "3rd choice is Red."
-
 //Note: Use ordinal numbers to tell their position.
+
+function displayColors(arr, ord) {
+
+}
+
 
 //16. Find the leap years in a given range of years.
 
