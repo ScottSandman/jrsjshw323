@@ -226,6 +226,18 @@ function longest_common_starting_substring(arr) {
 //console.log(num_string_range('a', "z", 2));
 //["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
 
+function num_string_range(start, end, step) {
+    let arr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    let startIndex = (start.charCodeAt(0)) - 97
+    let endIndex = (end.charCodeAt(0)) - 97
+    let result = []
+    for (let i = startIndex; i <= endIndex; i += step) {
+        result.push(arr[i])
+    }
+    return result
+}
+console.log(num_string_range('a', "z", 2))
+
 //30. Write a JavaScript function to merge two arrays and removes all duplicates elements.
 //Test Data:
 //var array1 = [1, 2, 3];
