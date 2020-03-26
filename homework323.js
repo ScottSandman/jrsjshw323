@@ -95,10 +95,59 @@ console.log(insertDash(2468))
 //7. Write a JavaScript program to sort the items of an array.
 //Sample array: var arr1 = [-3, 8, 7, 6, 5, -4, 3, 2, 1]; Sample Output: -4, -3, 1, 2, 3, 5, 6, 7, 8
 
+function sortedIncreasingOrder(arr) {
+  for (let k = 0; k < arr.length; k++) {
+    for (let i = arr.length - 1; i >= 0; i--) {
+      if (arr[i] < arr[i - 1]) {
+        let larger = arr[i - 1];
+        let lesser = arr[i];
+        arr[i] = larger;
+        arr[i - 1] = lesser;
+      }
+    }
+  }
+  return arr;
+}
+sortedIncreasingOrder([-3, 8, 7, 6, 5, -4, 3, 2, 1]);
+
 
 
 //8. Write a JavaScript program to find the most frequent item of an array.
 //Sample array: var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]; Sample Output: a(5 times)
+
+function mostFrequent(arr) {
+  let countArray = new Array(125).fill(0)
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof (arr[i]) === "string") {
+      let alphaIndex = arr[i].charCodeAt(0)
+      countArray[alphaIndex] += 1
+    }
+    else if (arr[i] === 0) {
+      countArray[0] += 1;
+    }
+    else {
+      let numIndex = arr[i]
+      countArray[numIndex] += 1
+    }
+  }
+  let highest = Math.max.apply(Math, countArray);
+  let result = ""
+  for (let j = 0; j < countArray.length; j++) {
+    if (countArray[j] === highest) {
+      if (j > 96) {
+        result = String.fromCharCode(j);
+        return (result + "(" + highest + " times)")
+      } else {
+        result = j;
+        return (result + "(" + highest + " times)")
+      }
+    }
+  }
+}
+mostFrequent([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3])
+mostFrequent([3, 'z', 'z', 'z', 2, 3, 'z', 3, 'z', 2, 4, 9, 3])
+mostFrequent([3, 0, 0, 0, 2, 3, 0, 3, 0, 2, 4, 9, 3])
+mostFrequent([3, 3, 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3])
 
 //9. Write a JavaScript program which accept a string as input and swap the case of each character.For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'.
 
