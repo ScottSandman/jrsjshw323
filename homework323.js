@@ -243,13 +243,42 @@ addItems(
 //15. We have the following arrays:
 //color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "]; o = ["th", "st", "nd", "rd"] Write a JavaScript program to display the colors in the following way: "1st choice is Blue ." "2nd choice is Green." "3rd choice is Red."
 //Note: Use ordinal numbers to tell their position.
+color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "]
+o = ["th", "st", "nd", "rd"]
 
 function displayColors(arr, ord) {
-
+  let str = ""
+  for (let i = 0; i < arr.length; i++) {
+    let index = i + 1;
+    if (i >= 10) {
+      index = index % 10;
+    }
+    if (index === 1) {
+      str += index + ord[index] + " choice is " + arr[i] + ". ";
+    } else if (index === 2) {
+      str += index + ord[index] + " choice is " + arr[i] + ". ";
+    } else if (index === 3) {
+      str += index + ord[index] + " choice is " + arr[i] + ". ";
+    } else {
+      str += index + ord[0] + " choice is " + arr[i] + ". ";
+    }
+  } return str
 }
 
+console.log(displayColors(color, o));
 
 //16. Find the leap years in a given range of years.
+
+function getLeapYears(from, to) {
+  let results = new Array(0);
+  for (let i = from; i <= to; i++) {
+    if (i % 4 === 0 && i % 100 !== 0 || i % 400 === 0) {
+      results.push(i);
+    }
+  } return results
+}
+
+console.log(getLeapYears(1603, 2020))
 
 //17. Write a JavaScript program to shuffle an array.
 
